@@ -29,13 +29,14 @@ namespace vidly.Controllers
         {
             return Content("id =" + id);
         }
-        public ActionResult Index(string name, int? id)
+        public ActionResult Index()
         {
-            if (!id.HasValue)
-                id = 7;
-            if (string.IsNullOrWhiteSpace(name))
-                name = "sadra";
-            return Content(id + " " + name);
+            List<Movie> movies = new List<Movie>()
+            {
+                new Movie(){Name="Sherk"},
+                new Movie(){Name="Wall-e"}
+            };
+            return View(movies);
         }
         [Route("movies/released/{year}/{month}")]
         public ActionResult ByReleasedDate(int year, int month)
